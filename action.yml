@@ -1,0 +1,16 @@
+name: 'Upload TestModpack'
+description: 'Uploading TestModpack and Building A3Sync'
+runs:
+  using: "composite"
+  steps: 
+     - run: D:\arma3work\drive\_work\Remove_A3Sync.ps1
+       shell: powershell
+     
+     - run: D:\arma3work\drive\_work\Upload_TestModpack.ps1
+       shell: powershell
+
+     - run: cd "C:\Program Files (x86)\ArmA3Sync"; java -jar ArmA3Sync.jar -BUILD "VahanaLifeTest"
+       shell: powershell
+
+     - run: D:\arma3work\drive\_work\Upload_A3SyncRepo.ps1
+       shell: powershell
